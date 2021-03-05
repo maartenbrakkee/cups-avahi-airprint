@@ -1,8 +1,9 @@
-FROM alpine:latest
+FROM archlinux:latest
 
 # Install the packages we need. Avahi will be included
-RUN echo "http://nl.alpinelinux.org/alpine/edge/testing" >> /etc/apk/repositories &&\
-	apk add --update cups \
+RUN pacman -Syu --noconfirm && \
+	pacman -S --noconfirm \
+	cups \
 	cups-libs \
 	cups-pdf \
 	cups-client \
@@ -14,6 +15,7 @@ RUN echo "http://nl.alpinelinux.org/alpine/edge/testing" >> /etc/apk/repositorie
 	gutenprint-cups \
 	ghostscript \
 	hplip \
+	hpoj \
 	avahi \
 	inotify-tools \
 	python3 \
@@ -24,7 +26,7 @@ RUN echo "http://nl.alpinelinux.org/alpine/edge/testing" >> /etc/apk/repositorie
 	rsync \
 	&& pip3 --no-cache-dir install --upgrade pip \
 	&& pip3 install pycups \
-	&& rm -rf /var/cache/apk/*
+	&& pacman -Scc --noconfirm
 
 # This will use port 631
 EXPOSE 631
