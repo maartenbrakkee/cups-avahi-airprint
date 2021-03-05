@@ -1,12 +1,9 @@
-FROM ubuntu:zesty
+FROM ubuntu:18.04
 
 # Add repos
-RUN echo 'deb http://us.archive.ubuntu.com/ubuntu/ zesty multiverse' >> /etc/apt/sources.list.d/multiverse.list && \
-	echo 'deb-src http://us.archive.ubuntu.com/ubuntu/ zesty multiverse' >> /etc/apt/sources.list.d/multiverse.list && \
-	echo 'deb http://us.archive.ubuntu.com/ubuntu/ zesty-updates multiverse' >> /etc/apt/sources.list.d/multiverse.list && \
-	echo 'deb-src http://us.archive.ubuntu.com/ubuntu/ zesty-updates multiverse' >> /etc/apt/sources.list.d/multiverse.list && \
-	echo 'deb http://archive.ubuntu.com/ubuntu/ zesty-security multiverse' >> /etc/apt/sources.list.d/multiverse.list && \
-	echo 'deb-src http://archive.ubuntu.com/ubuntu/ zesty-security multiverse' >> /etc/apt/sources.list.d/multiverse.list
+RUN  echo "deb http://archive.ubuntu.com/ubuntu bionic main multiverse\n" > /etc/apt/sources.list \
+  && echo "deb http://archive.ubuntu.com/ubuntu bionic-updates main multiverse\n" >> /etc/apt/sources.list \
+  && echo "deb http://security.ubuntu.com/ubuntu bionic-security main multiverse\n" >> /etc/apt/sources.list
 
 # Install the packages we need. Avahi will be included
 RUN apt-get update && apt-get install -y \
