@@ -1,7 +1,7 @@
 FROM ubuntu:18.04
 
 # Add repos
-RUN  echo "deb http://archive.ubuntu.com/ubuntu bionic main multiverse\n" > /etc/apt/sources.list \
+RUN  echo "deb http://archive.ubuntu.com/ubuntu bionic main multiverse\n" >> /etc/apt/sources.list \
   && echo "deb http://archive.ubuntu.com/ubuntu bionic-updates main multiverse\n" >> /etc/apt/sources.list \
   && echo "deb http://security.ubuntu.com/ubuntu bionic-security main multiverse\n" >> /etc/apt/sources.list
 
